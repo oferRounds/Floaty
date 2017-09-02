@@ -13,13 +13,6 @@ Floaty is simple floating action button for iOS. (formerly KCFloatingActionButto
 ## Preview
 <img src="https://github.com/kciter/Floaty/raw/master/Images/preview.gif" width='187' alt="Preview gif">
 
-## Support
-If you like this open source, you can sponsor it. :smile:
-```
-Litecoin: LZSFLGDLe1pBxQB7v54kEcobYnu1uAR9U6
-Bitcoin: 1Hrauu2sPczma53gpYU4Y2kap5Hi6K3Ma3
-```
-
 ## Requirements
 * iOS 9.0+
 * Swift 3.0
@@ -96,14 +89,6 @@ floaty.sticky = true // sticking to parent UIScrollView(also UITableView, UIColl
 scrollView.addSubview(floaty)
 ```
 
-### Friendly Tap
-You can use the `friendlyTap` property.
-```swifty
-fab.friendlyTap = true
-scrollView.addSubview(fab)
-```
-With the default location of the frame, the button is now tappable until the right and rightbottom of the screen. This prevents tapping behind it by accident.
-
 ### Animation type
 <table>
 <tr>
@@ -122,9 +107,6 @@ With the default location of the frame, the button is now tappable until the rig
 <td><img src="https://github.com/kciter/Floaty/raw/master/Images/none_ani.gif" width='187' alt="None animation gif"></td>
 </tr>
 </table>
-
-## ToDo
-* [ ] Labels to come at the right hand side of the FAB Item menu.
 
 ## License
 The MIT License (MIT)

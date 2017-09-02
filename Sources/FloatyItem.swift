@@ -8,11 +8,6 @@
 
 import UIKit
 
-public enum FloatyItemLabelPositionType {
-    case left
-    case right
-}
-
 /**
  Floating Action Button Object's item.
  */
@@ -47,11 +42,6 @@ open class FloatyItem: UIView {
     }
 
     /**
-     Enable/disable shadow.
-     */
-    open var hasShadow: Bool = true
-
-    /**
      Circle Shadow color.
      */
     open var circleShadowColor: UIColor = UIColor.black
@@ -67,10 +57,9 @@ open class FloatyItem: UIView {
     open var handler: ((FloatyItem) -> Void)? = nil
 
     open var imageOffset: CGPoint = CGPoint.zero
-    open var imageSize: CGSize = CGSize(width: 25, height: 25) {
+    open var imageSize: CGSize = CGSize(width: 15, height: 15) {
         didSet {
             _iconImageView?.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
-            _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
         }
     }
 
@@ -88,12 +77,6 @@ open class FloatyItem: UIView {
      If you keeping touch inside button, button overlaid with tint layer.
      */
     fileprivate var tintLayer: CAShapeLayer = CAShapeLayer()
-    
-    /**
-     Item's title label position.
-     deafult is left
-     */
-    open var titleLabelPosition: FloatyItemLabelPositionType = .left
 
     /**
      Item's title label.
@@ -117,12 +100,7 @@ open class FloatyItem: UIView {
         didSet {
             titleLabel.text = title
             titleLabel.sizeToFit()
-            if(titleLabelPosition == .left) {
-                titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
-            } else { //titleLabel will be on right
-                titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
-            }
-            
+            titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
             titleLabel.frame.origin.y = self.size/2-titleLabel.frame.size.height/2
         }
     }
@@ -149,17 +127,6 @@ open class FloatyItem: UIView {
     open var icon: UIImage? = nil {
         didSet {
             iconImageView.image = icon
-        }
-    }
-    
-    /**
-     Item's icon tint color change
-     */
-    open var iconTintColor: UIColor! = nil {
-        didSet {
-            let image = iconImageView.image?.withRenderingMode(.alwaysTemplate)
-            _iconImageView?.tintColor = iconTintColor
-            _iconImageView?.image = image
         }
     }
 
@@ -222,9 +189,6 @@ open class FloatyItem: UIView {
     }
 
     fileprivate func setShadow() {
-        if !hasShadow {
-            return
-        }
         circleLayer.shadowOffset = CGSize(width: 1, height: 1)
         circleLayer.shadowRadius = 2
         circleLayer.shadowColor = circleShadowColor.cgColor
